@@ -2,17 +2,16 @@
   "extends": "@tsconfig/node20/tsconfig.json",
   "compilerOptions": {
     "jsx": "preserve",
-    "outDir": "./dist", // Specifies where the compiled JS files will go
-    "declaration": true, // Ensures .d.ts files are generated
-    "declarationDir": "./dist", // Specifies where to output .d.ts files
+    "outDir": "./dist",
+    "declaration": true,
+    "declarationDir": "./dist",
     "skipLibCheck": true,
     "lib": ["dom", "esnext"],
-    "target": "ESNext" // Sets the target JavaScript version
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "esModuleInterop": true
   },
-  "include": [
-    "src/**/*" // Ensure that all files in the src folder are included
-  ],
-  "exclude": [
-    "node_modules" // Exclude node_modules from compilation
-  ]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
 }
