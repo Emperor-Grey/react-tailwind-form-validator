@@ -19,7 +19,7 @@ function App() {
           This demo showcases form validation using React, Tailwind CSS, and
           custom hooks. Check the source code on{' '}
           <a
-            href="https://github.com/"
+            href="https://github.com/Emperor-Grey/react-tailwind-form-validator"
             target="_blank"
             className="text-blue-500 hover:underline"
           >
