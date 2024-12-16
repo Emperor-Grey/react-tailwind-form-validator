@@ -7,8 +7,12 @@ A lightweight, flexible, and customizable form validation library built with Rea
 To install the library, run the following command:
 
 ```bash
-npm install react-tailwind-form-validator
+npm install react-tailwind-form-validator  or # yarn add react-tailwind-form-validator
 ```
+
+## Live Demo
+
+Check out the live working demo at: [React Tailwind Form Validator Demo](https://react-tailwind-form-validator-demo.vercel.app/)
 
 ## Getting Started
 
