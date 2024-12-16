@@ -61,13 +61,13 @@ Each component can be styled using Tailwind CSS classes.
 Create a new file `src/components/MyForm.tsx`:
 
 ```typescript
-import React, { useState } from 'react';
+import React from 'react';
 import {
+  Button,
   Input,
   RadioButton,
   Select,
-  Button,
-  useFormData
+  useFormData,
 } from 'react-tailwind-form-validator';
 
 interface SubmittedData {
@@ -79,91 +79,88 @@ interface SubmittedData {
 }
 
 export const MyForm: React.FC = () => {
-  const [submittedData, setSubmittedData] = useState<SubmittedData | null>(null);
   const { formData, revalidate, areInputsValid } = useFormData();
+
+  const data: SubmittedData = {
+    email: formData.email,
+    password: formData.password,
+    username: formData.username,
+    gender: formData.gender,
+    securityLevel: formData.securityLevel,
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     revalidate();
 
     if (areInputsValid()) {
-      const data: SubmittedData = {
-        email: formData.email,
-        password: formData.password,
-        username: formData.username,
-        gender: formData.gender,
-        securityLevel: formData.securityLevel
-      };
-      setSubmittedData(data);
       console.log('Form submitted:', data);
+      alert(`Form submitted successfully!, Data is \n${JSON.stringify(data)}`);
+    } else {
+      alert('Please fill at least one field.');
     }
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
-      <form className="space-y-4" onSubmit={handleSubmit}>
-        <Input
-          fieldKey="email"
-          type="email"
-          placeholder="Enter your email"
-          required
-          styleVariant="outline"
-        />
+    <form className="space-y-3 w-full flex flex-col items-center">
+      <Input
+        fieldKey="email"
+        styleVariant="outline"
+        type="email"
+        className="text-lg"
+      />
 
-        <Input
-          fieldKey="password"
-          type="password"
-          placeholder="Enter your password"
-          required
-          styleVariant="outline"
-        />
+      <Input
+        fieldKey="password"
+        type="password"
+        styleVariant="outline"
+        className="text-lg"
+      />
 
-        <Input
-          fieldKey="username"
-          type="text"
-          placeholder="Choose a username"
-          customValidation={(value) =>
-            value.length < 4 ? 'Username must be at least 4 characters' : null
-          }
-        />
+      <Input
+        type="text"
+        className=""
+        fieldKey="username"
+        placeholder="Username"
+        customValidation={(value: string) =>
+          value.length < 4 ? 'Username must be at least 4 characters' : null
+        }
+      />
 
-        <RadioButton
-          fieldKey="gender"
-          options={[
-            { value: 'male', label: 'Male' },
-            { value: 'female', label: 'Female' },
-            { value: 'other', label: 'Other' }
-          ]}
-          required
-        />
+      <RadioButton
+        fieldKey="gender"
+        containerClassName="flex justify-center items-center gap-4"
+        labelClassName="space-x-2"
+        options={[
+          { value: 'male', label: 'Male' },
+          { value: 'female', label: 'Female' },
+          {
+            value: "Don't Blame me for not including the rest...😉",
+            label: 'Others',
+          },
+        ]}
+        required
+      />
 
-        <Select
-          fieldKey="securityLevel"
-          placeholder="Select Security Level"
-          options={[
-            { value: 'low', label: 'Low Security' },
-            { value: 'medium', label: 'Medium Security' },
-            { value: 'high', label: 'High Security' }
-          ]}
-          required
-        />
+      <Select
+        fieldKey="security"
+        className=""
+        options={[
+          { value: 'max', label: 'Password Security to max' },
+          { value: 'low', label: 'Password Security to low' },
+        ]}
+        placeholder="Select Security Level"
+        styleVariant="outline"
+      />
 
-        <Button
-          type="submit"
-          variant="outline"
-          className="w-full"
-        >
-          Submit Form
-        </Button>
-      </form>
-
-      {submittedData && (
-        <div className="mt-4 p-4 bg-gray-100 rounded">
-          <h3 className="font-bold mb-2">Submitted Data:</h3>
-          <pre>{JSON.stringify(submittedData, null, 2)}</pre>
-        </div>
-      )}
-    </div>
+      <Button
+        variant="outline"
+        onClick={handleSubmit}
+        className="text-lg py-3 px-6 font-semibold"
+      >
+        Submit
+      </Button>
+    </form>
   );
 };
 ```
