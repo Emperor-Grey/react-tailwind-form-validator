@@ -1,0 +1,56 @@
+{
+  "name": "react-tailwind-form-validator",
+  "version": "1.2.2",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "description": "A React form validation library using Tailwind CSS",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Emperor-Grey/react-tailwind-form-validator.git"
+  },
+  "author": "Your Name lohitsaidev@gmail.com",
+  "license": "MIT",
+  "homepage": "https://github.com/Emperor-Grey/react-tailwind-form-validator#readme",
+  "scripts": {
+    "build:ts": "tsc",
+    "build:css": "tailwindcss -i src/index.css -o dist/styles.css",
+    "build": "yarn build:ts && yarn build:css",
+    "dev": "yarn build:ts && yarn build:css --watch",
+    "clean": "rm -rf dist",
+    "format": "eslint . --fix && prettier --write ."
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.2.0",
+    "@eslint/js": "^9.16.0",
+    "@tsconfig/node20": "^20.1.4",
+    "@types/node": "^22.10.1",
+    "@types/react": "^19.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.18.0",
+    "@typescript-eslint/parser": "^8.18.0",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.16.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-react": "^7.37.2",
+    "postcss": "^8.4.49",
+    "prettier": "^3.4.2",
+    "tailwindcss": "^3.4.16",
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "react": "^19.0.0"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "dist/styles.css"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    },
+    "./styles.css": "./dist/styles.css"
+  }
+}
