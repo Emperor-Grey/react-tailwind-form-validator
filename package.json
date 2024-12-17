@@ -1,6 +1,6 @@
 {
   "name": "react-tailwind-form-validator",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "description": "A lightweight and customizable React form validation library built with Tailwind CSS for modern, responsive, and accessible forms.",
@@ -10,7 +10,7 @@
   },
   "author": "Lohit (lohitsaidev@gmail.com)",
   "license": "MIT",
-  "homepage": "https://github.com/Emperor-Grey/react-tailwind-form-validator#readme",
+  "homepage": "https://emperor-grey.github.io/react-tailwind-form-validator/",
   "keywords": [
     "react",
     "form-validation",
